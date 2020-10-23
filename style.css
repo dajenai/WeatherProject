@@ -1,0 +1,57 @@
+body {
+  font-family: "News Cycle", sans-serif;
+  background: linear-gradient(to right, #fdfcfb 0%, #e2d1c3 100%);
+}
+h1 {
+  color: rgb(154, 219, 55);
+  font-weight: 100;
+  font-size: 25px;
+  line-height: 30px;
+  margin: 0;
+}
+ul {
+  margin: 0 0 10px;
+  padding: 0;
+}
+li {
+  color: green;
+  font-size: 15px;
+  font-weight: 100;
+  height: 20px;
+  line-height: 1;
+  list-style: none;
+}
+
+.weather-app {
+  color: rgb(154, 219, 55);
+  border: 1px solid #fff;
+  padding: 10px;
+  margin: 20px auto;
+  border-radius: 10px;
+  max-width: 500px;
+}
+.weather-icon {
+  height: 65px;
+  width: 65px;
+  margin-right: 10px;
+}
+.temperature {
+  color: #000000;
+  font-size: 65px;
+  font-weight: 500;
+  line-height: 1;
+}
+.units {
+  position: relative;
+  top: -35px;
+}
+.search-form {
+  margin-bottom: 20px;
+}
+footer {
+  text-align: center;
+  color: #6d767d;
+  padding: 50px;
+  background: rgb(224, 238, 203);
+  margin: 30px;
+}
