@@ -1,115 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <title>JS Week 5 Homework</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=News+Cycle&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/12079c6f9d.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
+<html>
 
-  <body>
-      <div class="container">
-<div class="weather-app">
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <title>API Week 5 Homework</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=News+Cycle&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/12079c6f9d.js" crossorigin="anonymous"></script>
+</head>
+
+</body>
+<div class="container">
+  <div class="weather-app">
     <form class="search-form" id="search-form">
-      <div class="col-9">
-        <input
-        type="search"
-        placeholder="Enter City Name"
-        autocomplete="off"
-        autofocus="on"
-        id="city-input"
-      />
-</div>
-<div class="col-3">
-      <input type="submit" 
-      value="Search" 
-      class="form-control btn btn-primary shadow-sm"
-      />
-    </form>
-    <h1> id="city"> Current Weather</h1>
-    <ul>
-        <li> id="date"></li>
-        <li>id="temperature-description"</li>
-    </ul>
-<div class="row">
-    <div class="col-6">
-        <div class="clearfix">
+      <div class="row">
+        <div class="col-6">
+          <input type="search" placeholder="Type City Name..." autocomplete="off" autofocus="on" id="city-input"
+            class="form-control shadow-sm" />
         </div>
+        <div class="col-3">
+          <input type="submit" value="Search" class="form-control btn btn-primary shadow-sm w-100" />
+        </div>
+        <div class="col-3">
+          <button class="btn btn-success w-100" id="current-location-button"> Current Weather
+          </button>
+        </div>
+      </div>
+    </form>
+    <h1 id="city"></h1>
+    <ul>
+      <li id="date"></li>
+      <li id="description"></li>
+    </ul>
+    <div class="row">
+      <div class="col-6">
+        <div class="clearfix">
+          <div class="float-left">
+            <span class="temperature" id="temperature"></span>
+            ><span class="units">˚F</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <ul>
+          <li>Humidity: <span id="humidity"></span>%</li>
+          <li>Wind: <span id="wind"></span>km/h</li>
+        </ul>
+      </div>
     </div>
+  </div>
 </div>
-    <h2>Sun Oct 4, 10:40, 2020</h2>
-    <h3>Partly Cloudy</h3>
-    <h4><i class="fas fa-cloud"></i> 19°C</h4>
-<button>Current Location</button>
-    <script>
-      let apiKey = "edd438239dd8dda35a73802dcb584988";
-      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q= ${city} &APPID=edd438239dd8dda35a73802dcb584988&units=imperial`;
+<script src="index.js"></script>
+</body>
 
-      function search(event) {
-        event.preventDefault();
-        let searchInput = document.querySelector("#search-text-input");
-        let h1 = document.querySelector("h1");
-        if (searchInput.value) {
-          h1.innerHTML = `Searching for ${searchInput.value}...`;
-        } else {
-          h2.innerHTML = null;
-          alert("Please type a city");
-        }
-      }
-      let form = document.querySelector("#search-form");
-      form.addEventListener("submit", search);
-
-      function formatDate(date) {
-        let hours = now.getHours();
-        if (hours < 10) {
-          hours = `0${hours}`;
-        }
-
-        let minutes = now.getMinutes();
-        if (minutes < 10) {
-          minutes = `0${minutes}`;
-        }
-
-        let dayIndex = date.getDay();
-        let days = [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ];
-        let day = days[dayIndex];
-        return `${day} ${hours}:${minutes}`;
-      }
-      function showTemperature(response) {
-            console.log(response.data);
-            let temperature = Math.round(response.data.main.temp);
-            let temperatureElement = document.querySelector("#temperature");
-            let description = document.querySelector("#temperature-description");
-            temperatureElement.innerHTML = `${temperature}˚F`;
-            description.innerHTML = response.data.weather[0].description;
-        }
-        let h1 = document.querySelector("#city");
-        h1.innerHTML = city;
-        axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
-  function showPosition(position) {
-        let h3 = document.querySelector("h3");
-        h1.innerHTML = `Your Latitude is ${position.coords.latitude} and your Longitude is ${position.coords.longitude}`;
-    }
-    navigator.geolocation.getCurrentPosition(showPosition);
-    let button = document.querySelector("button");
-    button.addEventListener("click", getCurrentPosition);
-  </script>
-  </body>
 </html>
